@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="./js/characterData.js" defer></script>
+    <script src="./js/lineGraph.js" defer></script>
+    <script src="./js/lineChartControls.js" defer></script>
+    <link href="./css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title>LineGraph</title>
+</head>
+<body>
+    <div>
+        <a href="./lineGraph.html">Line Graph</a>
+        <a href="./radarChart.html">Radar Chart</a>
+    </div>
+    <h1>Linegraph</h1>
+    <p>You can use this tool to compare stat growth</p>
+    <p>Select one or more classes, stats, a start and end level and press generate to generate a linegraph.</p>
+    <div class="chart-container" style="position: relative; height:800px; width:800px;">
+        <canvas id="characterStatLineGraph" width="800" height="800"></canvas>
+    </div>
+    <div id="error" class="red"></div>
+    <div id="checkboxesClasses">
+        <div id="cbsHunters">
+            <input type="checkbox" id="cbHUmar" name="HUmar">
+            <label for="HUmar">HUmar</label>
+            <input type="checkbox" id="cbHUnewearl" name="HUnewearl">
+            <label for="HUnewearl">HUnewearl</label>
+            <input type="checkbox" id="cbHUcast" name="HUcast">
+            <label for="HUcast">HUcast</label>
+            <input type="checkbox" id="cbHUcaseal" name="HUcaseal">
+            <label for="HUcaseal">HUcaseal</label>
+        </div>
+        <div id="cbsRangers">
+            <input type="checkbox" id="cbRAmar" name="RAmar">
+            <label for="RAmar">RAmar</label>
+            <input type="checkbox" id="cbRAmarl" name="RAmarl">
+            <label for="RAmarl">RAmarl</label>
+            <input type="checkbox" id="cbRAcast" name="RAcast">
+            <label for="RAcast">RAcast</label>
+            <input type="checkbox" id="cbRAcaseal" name="RAcaseal">
+            <label for="RAcaseal">RAcaseal</label>
+        </div>
+        <div id="cbsForces">
+            <input type="checkbox" id="cbFOmar" name="FOmar">
+            <label for="FOmar">FOmar</label>
+            <input type="checkbox" id="cbFOmarl" name="FOmarl">
+            <label for="FOmarl">FOmarl</label>
+            <input type="checkbox" id="cbFOnewm" name="FOnewm">
+            <label for="FOnewm">FOnewm</label>
+            <input type="checkbox" id="cbFOnewearl" name="FOnewearl">
+            <label for="FOnewearl">FOnewearl</label>
+        </div>
+    </div>
+
+    <div id="checkboxesStats">
+        <input type="checkbox" id="cbATP" name="ATP">
+        <label for="ATP">ATP</label>
+        <input type="checkbox" id="cbDFP" name="DFP">
+        <label for="DFP">DFP</label>
+        <input type="checkbox" id="cbMST" name="MST">
+        <label for="MST">MST</label>
+        <input type="checkbox" id="cbATA" name="ATA">
+        <label for="ATA">ATA</label>
+        <input type="checkbox" id="cbEVP" name="EVP">
+        <label for="EVP">EVP</label>
+        <input type="checkbox" id="cbHP" name="HP">
+        <label for="HP">HP</label>
+        <input type="checkbox" id="cbTP" name="TP">
+        <label for="TP">TP</label>
+    </div>
+
+    <div id="levelTextboxes">
+        <div>
+            <label for="start">Start level (5 minimum)</label>
+            <input type="text" id="tbStart" name="start" required size="10" value="5">
+        </div>
+        <div>
+            <label for="end">End level (200 maximum)</label>
+            <input type="text" id="tbEnd" name="end" required size="10" value="200">
+        </div>
+    </div>
+
+    <button onclick="lineGraphClick()">
+        Generate Linechart
+    </button>
+
+</body>
+</html>
