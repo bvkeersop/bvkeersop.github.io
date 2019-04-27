@@ -108,8 +108,6 @@ function getStatsAtLevel(characterDataObject, level) {
 
 function getCharacterClassDataInRange(startLevel, endLevel, characterClassData) {
 
-    console.log(characterClassData);
-
     let startIndex = (startLevel / 5) - 1;
     let startLevelData = characterClassData.levelData[startIndex];
 
@@ -127,19 +125,35 @@ function getCharacterClassDataInRange(startLevel, endLevel, characterClassData) 
     return null;
 }
 
-function getStatColor(statName, allStatColors, modifier) {
+
+function getModifiedStatColor(statName, allStatColors, modifier, colors) {
+    const statColorObject = getStatColorObject(allStatColors, statName);
+    const modifiedColorValue = getModifiedColorValue(statColorObject, colors, modifier);
+    return modifiedColorValue;
+}
+
+function getStatColorObject(allStatColors, statName) {
     for (let i = 0; i < allStatColors.length; i++) {
         if (allStatColors[i].statName === statName) {
-            for (let j = 0; j < _colors.length; j++) {
-                let colorValue = allStatColors[i].color[_colors[j]];
-                let modifiedColorValue = colorValue - modifier;
-                if (modifiedColorValue < 0) {
-                    modifiedColorValue = 0
-                }
-                allStatColors[i].color[_colors[j]] = modifiedColorValue;
-            }
-            return allStatColors[i].color;
+            return allStatColors[i];
         }
     }
-    console.log('error: statcolor could not be found');
+    console.log('error: statcolorobject could not be found');
+    return null;
+}
+
+function getModifiedColorValue(statColorObject, colors, modifier) {
+    const colorCopy = Object.assign({}, statColorObject.color);
+
+    for (let j = 0; j < colors.length; j++) {
+        let currentColor = colors[j];
+        let colorValue = statColorObject.color[colors[j]];
+        let modifiedColorValue = colorValue - modifier;
+
+        if (modifiedColorValue < 0) {
+            modifiedColorValue = 0
+        }
+        colorCopy[currentColor] = modifiedColorValue;
+    }
+    return colorCopy;
 }

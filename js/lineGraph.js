@@ -1,5 +1,7 @@
 function assembleLineGraphObject(selectedClasses, selectedStats, title, allClassData, allStatColors, startLevel, endLevel) {
 
+    console.log(allStatColors);
+
     if (startLevel < 5) {
         startLevel = 5;
     }
@@ -20,10 +22,11 @@ function assembleLineGraphObject(selectedClasses, selectedStats, title, allClass
             let dataLabel = `${selectedClasses[i]}(${selectedStats[j]})`;
             let characterStatsDataObject = getCharacterClassDataObject(selectedClasses[i], allClassData);
             let characterStatsDataObjectInRange = getCharacterClassDataInRange(startLevel, endLevel, characterStatsDataObject);
-            console.log(characterStatsDataObjectInRange);
             let statArray = createSingleStatArray(selectedStats[j], characterStatsDataObjectInRange);
             let modifier = i * (100 / selectedClasses.length);
-            let rgb = getStatColor(selectedStats[j], allStatColors, modifier);
+            //let rgb = getStatColor(selectedStats[j], allStatColors, modifier, _colors);
+            let rgb = getModifiedStatColor(selectedStats[j], allStatColors, modifier, _colors);
+            console.log(rgb);
             let dataSet = createLineChartDataSet(statArray, dataLabel, rgb);
             dataSets.push(dataSet);
         }
