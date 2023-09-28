@@ -1,11 +1,11 @@
 baseURL = 'https://bvkeersop.github.io/'
 languageCode = 'en-us'
-title = "Bart's Technical Tidbits"
 theme = 'LoveIt'
-description = "Bart's Technical Tidbits, a developer's blog"
 
 
 [params]
+  title = "Bart's Technical Tidbits"
+  description = "Bart's Technical Tidbits, a developer's blog"
   [params.header]
     [params.header.title]
       name = "Bart's Technical Tidbits"
