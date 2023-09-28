@@ -1,0 +1,50 @@
+baseURL = 'https://bvkeersop.github.io/'
+languageCode = 'en-us'
+title = "Bart's Technical Tidbits"
+theme = 'LoveIt'
+
+
+[params]
+  [params.header]
+    [params.header.title]
+      name = "Bart's Technical Tidbits"
+  [params.home]
+    [params.home.profile]
+      subtitle = "Hi, I'm Bart! A software engineer working primairly with dotnet, enjoy my Blog!"
+      gravatarEmail = "bart.van.keersop@gmail.com"
+[params.social]
+  [params.social.LinkedIn]
+    weight = 0
+    id = "bvkeersop"
+    title = "LinkedIn"
+  [params.social.Github]
+    weight = 1
+    id = "bvkeersop"
+    title = "Github"
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    # you can add extra information before the name (HTML format is allowed), such as icons
+    pre = ""
+    name = "Posts"
+    url = "/posts/"
+    # title will be shown when you hover on this menu link
+    title = ""
+    weight = 1
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    name = "Tags"
+    url = "/tags/"
+    title = ""
+    weight = 2
+  [[menu.main]]
+    identifier = "categories"
+    pre = ""
+    name = "Categories"
+    url = "/categories/"
+    title = ""
+    weight = 3
+
+  [params.page.share]
+    enable = false
