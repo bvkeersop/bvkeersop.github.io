@@ -29,8 +29,7 @@ If you're curious about the inner workings and need in-depth information, you ca
 ### Code example
 
 So first off, let's start by looking at how you can manually create an HTTP client. Like in all the other examples, I implemented the `GetAsync()` and `PostAsync()` methods, which make a call to the WeatherForecast controller. 
-Both methods  manually created extension methods to make deserializing (`GetDeserializedContent()`) and serializing (`ToJsonHttpContent()`) content easier. This logic can be re-used across different clients.
-
+Both methods use manually created extension methods to make the code more concise. `GetDeserializedContent()` is used for deserializing and `ToJsonHttpContent()` for serializing. This logic can be re-used across different clients.
 
 ```C#
 public class ManualWeatherForecastClient : IManualWeatherForecastClient
@@ -70,7 +69,6 @@ public class ManualWeatherForecastClient : IManualWeatherForecastClient
 
 The dependency injection is straightforward. Call `AddHttpClient()` on your servicecollection, and provide the interface and the implementation as generic parameters. You can then call this method by passing in an action that takes an HttpClient as a parameter, and configures it.
 
-
 ```C#
 public static IServiceCollection AddManualWeatherForecastClient(
     this IServiceCollection services, Action<HttpClient> configureClient)
@@ -92,7 +90,7 @@ Creating a client manually may not be all that bad; it provides the highest degr
 
 ### Introduction
 
-As of the time of writing, [RestSharp](https://Github.com/restsharp/RestSharp boasts 9.2k stars on Github, the most of all the libraries we discuss here. With its repository having been initiated in November 2009. It experienced a period of inactivity from 2015 to 2020, but in recent years, the project has seen renewed maintenance efforts. Notably, the library has been updated to utilize Microsoft's HttpClient internally, addressing a previous concern that deterred some users. Originally, RestSharp was created quite some time ago to simplify interactions with [WebClient](https://learn.microsoft.com/en-us/dotnet/api/system.net.webclient?view=net-7.0). However, in light of the availability of HttpClient, is RestSharp still a worthwhile choice today?
+As of the time of writing, [RestSharp](https://Github.com/restsharp/RestSharp) boasts 9.2k stars on Github, the most of all the libraries we discuss here. With its repository having been initiated in November 2009. It experienced a period of inactivity from 2015 to 2020, but in recent years, the project has seen renewed maintenance efforts. Notably, the library has been updated to utilize Microsoft's HttpClient internally, addressing a previous concern that deterred some users. Originally, RestSharp was created quite some time ago to simplify interactions with [WebClient](https://learn.microsoft.com/en-us/dotnet/api/system.net.webclient?view=net-7.0). However, with the availability of Microsoft's HttpClient, is RestSharp still a worthwhile choice today?
 
 ### Code example
 
@@ -234,6 +232,7 @@ public class FlurlWeatherForecastClient : IFlurlWeatherForecastClient
 ```
 
 As Flurl doesn't depend on injecting an HttpClient, but on building up the request fluently on an URI, we have to make sure the URI is available in the client class. If we want to make this configurable, I chose to use the [Options Pattern](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-7). I also added an options validation class, so we can make sure the URI is provided on startup.
+
 
 ```C#
 public static IServiceCollection AddFlurlWeatherForecastClient(
