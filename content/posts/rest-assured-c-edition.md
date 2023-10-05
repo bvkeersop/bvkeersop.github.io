@@ -231,7 +231,7 @@ public class FlurlWeatherForecastClient : IFlurlWeatherForecastClient
 }
 ```
 
-As Flurl doesn't depend on injecting an HttpClient, but on building up the request fluently on an URI, we have to make sure the URI is available in the client class. If we want to make this configurable, I chose to use the [Options Pattern](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-7). I also added an options validation class, so we can make sure the URI is provided on startup.
+As Flurl doesn't depend on injecting an HttpClient, but on building up the request fluently on an URI, we have to make sure the URI is available in the client class. If we want to make this configurable, we have to provide the URI via the DI container. The recommended way to do this, is to use the [Options Pattern](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-7). I also added an options validation class, so we can make sure the URI is provided on startup.
 
 
 ```C#
@@ -473,3 +473,4 @@ To summarize, asess your specific situation and consider factors such as the env
 ## Github repository
 
 All the code used in the examples is available in my [Github repository](https://Github.com/bvkeersop/RestClientExamples).
+Photo by [Luca Bravo](https://stocksnap.io/author/22748)
