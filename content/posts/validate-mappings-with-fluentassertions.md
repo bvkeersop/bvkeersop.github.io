@@ -12,20 +12,6 @@ summary = "Easily validate your mappings using FluentAssertions"
 
 ## Introduction
 
-Mapping internally used objects to ones we share externally via en API is a very common practise. We don't want to expose sensitive data, or more data than neccesary to limit payload size. This leads to mapping classes, methods, or the use of mapping libraries.
-At a client I work for, we used AutoMapper decided to move away from it. I'm not a big fan of AutoMapper, and why it's a good idea to stop using it requires a seperate blog post, so I won't get into that here. When this descision was made one of the developers in my team expressed worry in testing if the mappings would still be done correctly. AutoMapper provides the following method to make sure that every single Destination type member has a corresponding type member on the source type.
-
-```C#
-var configuration = new MapperConfiguration(cfg =>
-  cfg.CreateMap<Source, Destination>());
-
-configuration.AssertConfigurationIsValid();
-```
-
-He wondered if there's a way we could garantuee this in some other way, so I decided to take a look. The results I found, and the conclusion I've drawn from this can be found in this blog post, hopefully they can help you in your coding journey! 
-
-## Introduction
-
 Mapping internal objects to those shared externally through an API is a common practice. The primary goal is to prevent the exposure of sensitive or unnecessary data, thereby reducing payload size. This necessitates the utilization of various techniques, such as mapping classes, methods, or leveraging mapping libraries.
 
 During my time at a client's project, we initially relied on AutoMapper for this purpose but eventually decided to transition away from it. Setting aside my personal concerns about AutoMapper's usefulness, the reasoning behind this decision deserves its own dedicated blog post, a topic I won't explore further here. However, when this choice was made, a member of our development team expressed concerns about ensuring the accuracy of our mappings.
@@ -227,4 +213,4 @@ Visit [Fluent Assertions](https://fluentassertions.com/), and be sure to show yo
 
 ## Github
 
-As always, you can find the example code used for this blog post in my [Github](https://github.com/bvkeersop/MappingAssertionDemo).
+As always, you can find the example code used for this blog post on my [Github](https://github.com/bvkeersop/MappingAssertionDemo).
